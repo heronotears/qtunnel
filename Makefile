@@ -1,11 +1,12 @@
-GOPATH := $(shell pwd)
 .PHONY: clean test
 
-all:
-	@GOPATH=$(GOPATH) go install qtunnel
+PROJECT_DIR := $(shell pwd)
 
-clean:
-	@rm -fr bin pkg
+build:
+	go build -o ./bin/qtunnel .
 
 test:
-	@GOPATH=$(GOPATH) go test tunnel
+	go test ./tunnel
+
+clean:
+	rm -rf ./bin ./pkg
